@@ -1,4 +1,4 @@
-data "aws_ami" "ubuntu" {
+/* data "aws_ami" "ubuntu" {
     most_recent = true
 
     filter {
@@ -13,14 +13,24 @@ data "aws_ami" "ubuntu" {
     
     owners = ["099720109477"] # Canonical - donno what this is
 }
+ */
 
+terraform {
+ backend "s3" {
+	bucket     	= "terrfaorm-state-bucket"
+	key        	= "createec2-actions"
+	region     	= "us-east-1"
+	encrypt    	= true
+	dynamodb_table = "terrfaorm-state-bucket-lock"
+  }
+}
 
 provider "aws" {
-  region  = "us-east-2"
+  region  = "us-east-1"
 }
 resource "aws_instance" "app_server" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+  ami           = "ami-04b70fa74e45c3917"
+  instance_type = "t2.micro"
 #  key_name      = "efs-kp"
 tags = {
     Name = "github_ec2_name"
