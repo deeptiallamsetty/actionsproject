@@ -4,13 +4,13 @@ on:
     pull_request:
         branches:
             - main
-    workflow_dispatch:
-        inputs:
-            ec2-name:
-                description: EC2 name
-                required: true
-                default: 'App Server'
-                type: string
+#    workflow_dispatch:
+#        inputs:
+#            ec2-name:
+#                description: EC2 name
+#                required: true
+#                default: 'App Server'
+#                type: string
 jobs:
   provision-ec2:
     runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
       - name: Terraform Plan
         id:   plan
         env:
-          TF_VAR_ec2_name:  "${{ github.event.inputs.ec2-name }}"
+          TF_VAR_ec2_name:  "APP_SERVER"
         run: |
           terraform init
           terraform validate
