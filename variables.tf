@@ -1,3 +1,3 @@
-variable "ec2_name" {
+/* variable "ec2_name" {
   type = string
-}
+} */
