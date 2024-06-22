@@ -2,8 +2,8 @@ name: Pull Request Plan Terraform Code
 
 on:
     pull_request:
-        branches:
-            - main
+#        branches:
+#            - main
 #    workflow_dispatch:
 #        inputs:
 #            ec2-name:
@@ -12,7 +12,7 @@ on:
 #                default: 'App Server'
 #                type: string
 jobs:
-  provision-ec2:
+  provision-ec2-plan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
