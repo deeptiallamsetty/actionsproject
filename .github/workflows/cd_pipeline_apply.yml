@@ -1,10 +1,10 @@
-name: Push on Dev Branch
+name: CD Pipeplie - Apply TF code - Manual Trigger
 
 on:
-    push:
-        branches:
-            - dev
-#    workflow_dispatch:
+#    push:
+#        branches:
+#            - master
+    workflow_dispatch:
 #        inputs:
 #            ec2-name:
 #                description: EC2 name
@@ -12,7 +12,7 @@ on:
 #                default: 'App Server'
 #                type: string
 jobs:
-  dev-push-ec2-plan:
+  cd-tf-apply:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,9 +31,10 @@ jobs:
           terraform_wrapper: false
       - name: Terraform Plan
         id:   plan
-#        env:
-#          TF_VAR_ec2_name:  "APP_SERVER"
+        env:
+          TF_VAR_ec2_name:  "APP_SERVER"
         run: |
           terraform init
           terraform validate
-          terraform plan         
+          terraform plan
+          terraform apply -auto-approve         
