@@ -44,7 +44,6 @@ resource "aws_subnet" "PublicSubnet2" {
   tags = {
     Name = "Public-Subnet 1b"
   }
-
 }
 
 #create a private subnet 1
@@ -56,7 +55,6 @@ resource "aws_subnet" "PrivateSubnetUI1" {
   tags = {
     Name = "Private Subnet UI 1a"
   }
-
 }
 
 #create a private subnet 2
