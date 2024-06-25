@@ -3,7 +3,7 @@ name: Pull Request Plan Terraform Code
 on:
     pull_request:
         branches:
-            - "main"
+            - main
 #    workflow_dispatch:
 #        inputs:
 #            ec2-name:
