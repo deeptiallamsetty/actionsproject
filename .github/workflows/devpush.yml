@@ -35,6 +35,5 @@ jobs:
 #          TF_VAR_ec2_name:  "APP_SERVER"
         run: |
           terraform init
-          terraform format
           terraform validate
           terraform plan         
