@@ -12,7 +12,7 @@ on:
 #                default: 'App Server'
 #                type: string
 jobs:
-  provision-ec2-plan:
+  dev-push-ec2-plan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -35,6 +35,5 @@ jobs:
 #          TF_VAR_ec2_name:  "APP_SERVER"
         run: |
           terraform init
-          terraform format
           terraform validate
           terraform plan         
